@@ -1,6 +1,10 @@
 /** API client for CPAP Analyzer backend */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+// Server-side: use internal Docker network (API_INTERNAL_URL)
+// Client-side: use public URL (NEXT_PUBLIC_API_URL)
+const API_BASE = typeof window === 'undefined'
+  ? (process.env.API_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api")
+  : (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api");
 
 async function fetchAPI<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, options);
