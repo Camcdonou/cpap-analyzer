@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-2: #1a1a28;
+  --color-border: #2a2a3a;
+  --color-text: #e4e4ef;
+  --color-text-dim: #8888a0;
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Markdown prose for AI responses */
+.prose-custom p {
+  margin: 0.5em 0;
+}
+.prose-custom ul, .prose-custom ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+.prose-custom li {
+  margin: 0.25em 0;
+}
+.prose-custom strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.prose-custom h1, .prose-custom h2, .prose-custom h3 {
+  color: var(--color-text);
+  font-weight: 600;
+  margin-top: 0.75em;
+  margin-bottom: 0.25em;
+}
+.prose-custom h3 {
+  font-size: 0.95em;
+}
+.prose-custom h2 {
+  font-size: 1em;
+}
+.prose-custom code {
+  background: var(--color-surface-2);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+.prose-custom hr {
+  border-color: var(--color-border);
+  margin: 1em 0;
+}
