@@ -24,8 +24,10 @@ def load_data(sd_card_dir: str):
     """Load CPAP data from SD card directory into the database."""
     print(f"Loading CPAP data from: {sd_card_dir}")
 
-    # Init database
-    engine = create_db_engine("sqlite:///./cpap.db")
+    # Init database — use DATABASE_URL env var if set (Docker), else local path
+    import os
+    db_url = os.environ.get("DATABASE_URL", "sqlite:///./cpap.db")
+    engine = create_db_engine(db_url)
     init_db(engine)
     Session = get_session_factory(engine)
     db = Session()

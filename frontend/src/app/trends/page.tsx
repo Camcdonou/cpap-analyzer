@@ -1,6 +1,8 @@
 import { getTrends, getOverview } from "@/lib/api";
 import { TrendsClient } from "./trends-client";
 
+export const dynamic = "force-dynamic";
+
 export default async function TrendsPage() {
   let trends = null;
   let overview = null;

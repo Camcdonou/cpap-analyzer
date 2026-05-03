@@ -1,5 +1,8 @@
 import { getSession, getSessionEvents, getSessionSignals } from "@/lib/api";
+import type { SessionDetail, EventItem } from "@/lib/api";
 import { SessionDetailClient } from "./session-detail-client";
+
+export const dynamic = "force-dynamic";
 
 export default async function SessionDetailPage({
   params,
@@ -9,10 +12,10 @@ export default async function SessionDetailPage({
   const { id } = await params;
   const sessionId = parseInt(id, 10);
 
-  let session = null;
-  let events = [];
+  let session: SessionDetail | null = null;
+  let events: EventItem[] = [];
   let signals: Record<string, { values: number[]; sampling_rate: number; unit: string }> = {};
-  let error = null;
+  let error: string | null = null;
 
   try {
     session = await getSession(sessionId);

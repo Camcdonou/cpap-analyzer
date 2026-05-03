@@ -1,9 +1,12 @@
 import { getSessions } from "@/lib/api";
+import type { SessionSummary } from "@/lib/api";
 import { SessionList } from "./session-list";
 
+export const dynamic = "force-dynamic";
+
 export default async function SessionsPage() {
-  let sessions = [];
-  let error = null;
+  let sessions: SessionSummary[] = [];
+  let error: string | null = null;
 
   try {
     sessions = await getSessions();

@@ -1,9 +1,12 @@
 import { getSessions } from "@/lib/api";
 import { AIClient } from "./ai-client";
+import type { SessionSummary } from "@/lib/api";
+
+export const dynamic = "force-dynamic";
 
 export default async function AIPage() {
-  let sessions = [];
-  let error = null;
+  let sessions: SessionSummary[] = [];
+  let error: string | null = null;
 
   try {
     sessions = await getSessions();

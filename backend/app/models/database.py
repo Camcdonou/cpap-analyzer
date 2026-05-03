@@ -148,7 +148,9 @@ class AIReport(Base):
 
 # ── Database setup ────────────────────────────────────────────────────────
 def create_db_engine(db_url: str = "sqlite:///./cpap.db"):
-    return create_engine(db_url, echo=False)
+    # For absolute paths (Docker: sqlite:////data/cpap.db),
+    # SQLAlchemy expects 4 slashes. For relative: 3 slashes.
+    return create_engine(db_url, echo=False, connect_args={"check_same_thread": False})
 
 
 def init_db(engine):
