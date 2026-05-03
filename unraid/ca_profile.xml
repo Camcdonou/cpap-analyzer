@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CA_Profile>
+  <Overview>CPAP Analyzer - AI-powered sleep data analysis for ResMed AirSense machines</Overview>
+  <Author>
+    <Name>Camcdonou</Name>
+    <Github>https://github.com/Camcdonou</Github>
+    <Support>https://github.com/Camcdonou/cpap-analyzer/issues</Support>
+  </Author>
+  <Links>
+    <Support>https://github.com/Camcdonou/cpap-analyzer/issues</Support>
+    <Project>https://github.com/Camcdonou/cpap-analyzer</Project>
+  </Links>
+</CA_Profile>

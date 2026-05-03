@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Maintained by: Camcdonou (github.com/Camcdonou) -->
+<Container version="2">
+  <Name>CPAP Analyzer</Name>
+  <Repository>ghcr.io/camcdonou/cpap-analyzer:latest</Repository>
+  <Registry>https://github.com/Camcdonou/cpap-analyzer/pkgs/container/cpap-analyzer</Registry>
+
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+
+  <Support>https://forums.unraid.net/topic/XXXXXX/</Support>
+  <Project>https://github.com/Camcdonou/cpap-analyzer</Project>
+
+  <Category>HomeAutomation:Medical:</Category>
+  <Overview>AI-powered CPAP sleep data analysis for ResMed AirSense machines. Upload your SD card data and get interactive charts, trend analysis, and AI-generated reports you can actually understand.&#xD;&#xD;&#xD;&#xD;Features:&#xD; - Interactive charts: pressure, leak, respiratory rate, tidal volume per night&#xD; - Long-term trends: AHI over time, compliance rates, leak patterns&#xD; - AI reports: human-readable analysis of any night&#xD; - AI Q&amp;A: ask questions about your sleep data in plain English&#xD; - Session browser with AHI color coding&#xD;&#xD;Supports ResMed AirSense 10 &amp; 11 (SD card EDF data).</Overview>
+
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <Icon>https://raw.githubusercontent.com/Camcdonou/cpap-analyzer/main/unraid/images/icon.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+
+  <!-- Frontend port -->
+  <Config Name="Web UI Port" Target="3000" Default="3000"
+    Mode="tcp" Description="Port for the web interface"
+    Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+
+  <!-- Backend port -->
+  <Config Name="Backend API Port" Target="8000" Default="8000"
+    Mode="tcp" Description="Port for the backend API"
+    Type="Port" Display="always" Required="true" Mask="false">8000</Config>
+
+  <!-- Data path -->
+  <Config Name="Data Path" Target="/data" Default="/mnt/user/appdata/cpap-analyzer"
+    Mode="rw" Description="Database and uploaded CPAP data files"
+    Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/cpap-analyzer</Config>
+
+  <!-- SD Card mount for loading -->
+  <Config Name="SD Card Data" Target="/data/sd_card" Default=""
+    Mode="ro" Description="Path to your ResMed SD card backup (read-only). Used for initial data load."
+    Type="Path" Display="always" Required="false" Mask="false"></Config>
+
+  <!-- API Key -->
+  <Config Name="OPENAI_API_KEY" Target="OPENAI_API_KEY" Default=""
+    Mode="" Description="API key for AI features (OpenAI-compatible endpoint). Leave blank to disable AI."
+    Type="Variable" Display="always" Required="false" Mask="true"></Config>
+
+  <!-- API Base URL -->
+  <Config Name="OPENAI_BASE_URL" Target="OPENAI_BASE_URL" Default="https://api.openai.com/v1"
+    Mode="" Description="Base URL for OpenAI-compatible API endpoint"
+    Type="Variable" Display="advanced" Required="false" Mask="false">https://api.openai.com/v1</Config>
+
+  <!-- Model -->
+  <Config Name="OPENAI_MODEL" Target="OPENAI_MODEL" Default="gpt-4o-mini"
+    Mode="" Description="Model name for AI features"
+    Type="Variable" Display="advanced" Required="false" Mask="false">gpt-4o-mini</Config>
+</Container>

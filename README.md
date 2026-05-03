@@ -135,3 +135,19 @@ The EDF parsing logic is a Python port of [OSCAR](https://github.com/MaynardHand
 - **Frontend**: Next.js 16, React, Recharts, Tailwind CSS, TypeScript
 - **Database**: SQLite (zero config, single file)
 - **AI**: OpenAI-compatible API (Kimi K2.6, 256k context)
+
+## Unraid
+
+Install from the Community Applications store, or run manually:
+
+1. Go to **Apps** → search for **CPAP Analyzer**
+2. Install with default settings
+3. Copy your ResMed SD card data to your Unraid share
+4. Open the container console and run:
+   ```bash
+   python /app/backend/load_data.py /data/sd_card
+   ```
+5. Restart the container
+6. Open the WebUI
+
+Or use Docker Compose from the repo for the standard two-container setup.
